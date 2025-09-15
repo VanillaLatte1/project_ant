@@ -1,2 +1,3 @@
-# project_ant
-[Ant] 스터디 프로젝트
+# PROJECT_ANT
+![Ant Logo](./src/main/resources/images/ant.jpg)
+프로젝트 [Ant]
