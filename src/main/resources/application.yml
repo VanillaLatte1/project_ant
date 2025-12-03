@@ -4,9 +4,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/project_ant?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: root
-    password: 1234
+    url: ${DB_URL:jdbc:mariadb://localhost:3306/project_ant?serverTimezone=Asia/Seoul&characterEncoding=UTF-8}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
     driver-class-name: org.mariadb.jdbc.Driver
 
   jpa:
@@ -29,8 +29,8 @@ spring:
       client:
         registration:
           google:
-            client-id: 196466839765-a3pbrgao7ncferhj69i5d01nj9f8qhj8.apps.googleusercontent.com
-            client-secret: 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
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
             scope:
               - email
               - profile
@@ -39,8 +39,8 @@ spring:
             provider: google
 
           kakao:
-            client-id: 37f7c42ee8f631c1154652f0d62bebe9
-            client-secret: P7hIVw6e98dp7RFSMCWhX322MmIVMOHl
+            client-id: ${KAKAO_CLIENT_ID}
+            client-secret: ${KAKAO_CLIENT_SECRET}
             scope:
               - profile_nickname
             authorization-grant-type: authorization_code
@@ -50,8 +50,8 @@ spring:
             provider: kakao
 
           naver:
-            client-id: 59itXn3Xv5ttJkZOI8Yn
-            client-secret: lpbHZaYDqQ
+            client-id: ${NAVER_CLIENT_ID}
+            client-secret: ${NAVER_CLIENT_SECRET}
             scope:
               - name
               - email
@@ -83,4 +83,10 @@ springdoc:
 
 app:
   oauth:
-    redirect-success-uri: http://localhost:3000/login/success
+    redirect-success-uri: ${FRONTEND_REDIRECT_URI:http://localhost:3000/login/success}
+  jwt:
+    secret-key: ${JWT_SECRET_KEY:default-secret-key-for-development-only-change-in-production}
+    access-token-expiration-ms: 1800000      # 30분 (밀리초)
+    refresh-token-expiration-ms: 604800000   # 7일 (밀리초)
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}

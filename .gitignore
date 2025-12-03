@@ -184,3 +184,26 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build output
+/build/
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE - IntelliJ modules
+.idea/modules.xml
+.idea/modules/
+*.iml
+
+# Claude Code
+.claude/
+
+# Misc
+nul
